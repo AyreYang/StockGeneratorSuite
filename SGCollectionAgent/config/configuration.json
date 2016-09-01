@@ -1,0 +1,16 @@
+﻿{
+	"DBSetting":{"Host":"127.0.0.1","DBName":"StockGeneratorDB","User":"Ayre","Password":"ayre12345678!"},
+	"TimeSetting":{"WorkTime":"09:00-15:30", "AM":"10:00-11:00", "PM":"13:30-14:30"},
+	"ScriptSetting":{"Path":"config\\sql-scripts.xml"},
+	"ImportSetting":{"Path":"import",
+		"RawTemplates":{
+			"STK_GENERAL_M":"代码:Code,名称:Name,细分行业:Area,流通股(亿):CapitalStockInCirculation,总股本(亿):GeneralCapital,上市日期:ListingDate,财务更新:UpdateTime,营业收入:PrimaryIncome,每股收益:EarningsPerShare,每股净资:NetAssetPerShare,每股公积:AccumulationFundPerShare,每股未分配:UndistributedProfitPerShare,净利润:NetProfit",
+			"STK_DAILY_TD":"日期:Date,开盘:Open,最高:High,最低:Low,收盘:Close,成交量:VolAmount,成交额:VolMoney",
+			"IDX_GENERAL_M":"指数代码:Code,指数名称:Name",
+			"STK_FAVORITE_M":"股票代码:Code,股票名称:Name",
+			"STK_MINUTE_TD":"日期:Time,时间:Time,开盘:Open,最高:High,最低:Low,收盘:Close,成交量:VolAmount,成交额:VolMoney"
+		}
+	},
+	"MACDSetting":{"N1":12,"N2":26,"N3":9},
+	"RSISetting":{"N1":14,"N2":14,"N3":14}
+}

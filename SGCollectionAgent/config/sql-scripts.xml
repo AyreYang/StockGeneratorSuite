@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config TYPE="LIST">
+  <SQL-SCRIPT TYPE="STRING" ID="STK_FAVORITE_M">
+    CREATE TABLE {table-name} (
+    Code        	                            char(6),
+    Name	   	                                varchar(20),
+    CONSTRAINT PK_{table-name}_CD PRIMARY KEY(Code)
+    );
+  </SQL-SCRIPT>
+  
+  <SQL-SCRIPT TYPE="STRING" ID="IDX_REALTIME_TD">
+    CREATE TABLE {table-name} (
+    ID			bigint,
+    Time		timestamp,
+    Index	   	numeric(10,2),
+    VolAmount		numeric(30,0),
+    VolMoney		numeric(30,2),
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+    CREATE SEQUENCE {table-name}_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1;
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="STK_REALTIME_TD">
+    CREATE TABLE {table-name} (
+    ID			bigint,
+    Time		timestamp,
+    Price	   	numeric(10,2),
+    VolAmount		numeric(20,0),
+    VolMoney		numeric(20,2),
+    Flag		integer,
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+    CREATE SEQUENCE {table-name}_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1;
+  </SQL-SCRIPT>
+
+  <SQL-SCRIPT TYPE="STRING" ID="IDX_GENERAL_M">
+    CREATE TABLE {table-name} (
+    Code        	char(6),
+    Name	   	varchar(20),
+    CONSTRAINT PK_{table-name}_CD PRIMARY KEY(Code)
+    );
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="STK_GENERAL_M">
+    CREATE TABLE {table-name} (
+    Code        	                            char(6),
+    Name	   	                                varchar(20),
+    Area                                      varchar(100),
+    CapitalStockInCirculation                 numeric(20,2),
+    GeneralCapital                            numeric(20,2),
+    ListingDate                               date,
+    PrimaryIncome                             numeric(20,2),
+    EarningsPerShare                          numeric(10,4),
+    NetAssetPerShare                          numeric(10,2),
+    AccumulationFundPerShare                  numeric(10,2),
+    UndistributedProfitPerShare               numeric(10,2),
+    NetProfit                                 numeric(20,2),
+    UpdateTime                                date,
+    CONSTRAINT PK_{table-name}_CD PRIMARY KEY(Code)
+    );
+  </SQL-SCRIPT>
+
+
+  <SQL-SCRIPT TYPE="STRING" ID="IDX_DAILY_TD">
+    CREATE TABLE {table-name} (
+    ID			      bigint,
+    Date		      date,
+    Code        	char(6),
+    Open   	      numeric(10,2),
+    Close	   	    numeric(10,2),
+    High		      numeric(10,2),
+    Low		   	    numeric(10,2),
+    VolAmount		  numeric(30,0),
+    VolMoney		  numeric(30,2),
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+    CREATE SEQUENCE {table-name}_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1;
+  </SQL-SCRIPT>
+
+  <SQL-SCRIPT TYPE="STRING" ID="STK_DAILY_TD">
+    CREATE TABLE {table-name} (
+    ID			      bigint,
+    Date		      date,
+    Code        	char(6),
+    Open   	      numeric(10,2),
+    Close	   	    numeric(10,2),
+    High		      numeric(10,2),
+    Low		   	    numeric(10,2),
+    VolAmount		  numeric(20,0),
+    VolMoney		  numeric(20,2),
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+    CREATE SEQUENCE {table-name}_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1;
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="STK_MINUTE_TD">
+    CREATE TABLE {table-name} (
+    ID			      bigint,
+    Code        	char(6),
+    Time		      timestamp,
+
+    Open   	      numeric(10,2),
+    Close	   	    numeric(10,2),
+    High		      numeric(10,2),
+    Low		   	    numeric(10,2),
+    Average       numeric(10,2),
+    VolAmount		  numeric(20,0),
+    VolMoney		  numeric(20,2),
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+    CREATE SEQUENCE {table-name}_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1;
+  </SQL-SCRIPT>
+  
+  <SQL-SCRIPT TYPE="STRING" ID="STK_MACD_TD">
+    CREATE TABLE {table-name} (
+    ID			      bigint,
+    EMA12   	    numeric(10,4),
+    EMA26	   	    numeric(10,4),
+    DIFF		      numeric(10,4),
+    DEA		   	    numeric(10,4),
+    BAR     		  numeric(10,4),
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="STK_RSI_TD">
+    CREATE TABLE {table-name} (
+    ID			      bigint,
+    RSI1   	      numeric(10,4),
+    RSI2	   	    numeric(10,4),
+    RSI3		      numeric(10,4),
+    RSI1MaxEma		   	    numeric(10,4),
+    RSI1ABSEma     		    numeric(10,4),
+    RSI2MaxEma		   	    numeric(10,4),
+    RSI2ABSEma     		    numeric(10,4),
+    RSI3MaxEma		   	    numeric(10,4),
+    RSI3ABSEma     		    numeric(10,4),
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="STK_SUM_RESULT_TD">
+    CREATE TABLE {table-name} (
+    ID			                integer,
+    Code        	          char(6),
+    Time		                timestamp,
+
+    PAVG30_ORIENT   	      smallint,
+    PAVG30_DAYS   	        integer,
+    PAVG30_VALUE   	        numeric(10,6),
+    PAVG30_Date1		        date,
+    PAVG30_Date2		        date,
+
+    DEA_ORIENT   	          smallint,
+    DEA_DAYS   	            integer,
+    DEA_VALUE   	          numeric(10,6),
+    DEA_Date1		            date,
+    DEA_Date2		            date,
+
+    RSI_VALUE1   	          numeric(10,4),
+    RSI_VALUE2   	          numeric(10,4),
+    RSI_VALUE3   	          numeric(10,4),
+    RSI_Date		            date,
+    CONSTRAINT PK_{table-name}_ID PRIMARY KEY(ID)
+    );
+    CREATE SEQUENCE {table-name}_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1;
+  </SQL-SCRIPT>
+
+
+  <SQL-SCRIPT TYPE="STRING" ID="DEL_DAILY_BY_CD">
+    DELETE FROM STK_DAILY_TD
+    WHERE CODE = :CODE
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="DEL_MINUTE_BY_CD">
+    DELETE FROM STK_MINUTE_TD
+    WHERE CODE = :CODE
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="DEL_MACD_BY_CD">
+    DELETE FROM STK_MACD_TD
+    WHERE ID IN (SELECT ID FROM STK_DAILY_TD WHERE CODE = :CODE)
+  </SQL-SCRIPT>
+  <SQL-SCRIPT TYPE="STRING" ID="DEL_RSI_BY_CD">
+    DELETE FROM STK_RSI_TD
+    WHERE ID IN (SELECT ID FROM STK_DAILY_TD WHERE CODE = :CODE)
+  </SQL-SCRIPT>
+
+</Config>

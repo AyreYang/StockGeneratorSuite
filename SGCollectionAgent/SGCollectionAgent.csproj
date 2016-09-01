@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{68F78E28-907C-47ED-8911-182F0905EF4E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SGCollectionAgent</RootNamespace>
+    <AssemblyName>SGCollectionAgent</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\ImportTask.cs" />
+    <Compile Include="Tasks\RealtimeTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\TaskManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="import\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config\sql-scripts.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\configuration.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AyreDevelopmentKit\DataBase\DataBase.csproj">
+      <Project>{F32BE11C-E255-415E-9364-6A9A4355AA36}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AyreDevelopmentKit\Log\Log.csproj">
+      <Project>{32308A53-2512-4D77-9A61-D5B4DC1394C6}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AyreDevelopmentKit\Task\Task.csproj">
+      <Project>{0E010BBF-EDA4-4A49-8ABD-6CD6CEFCF0A1}</Project>
+      <Name>Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\References\SGDataService\SGDataService.csproj">
+      <Project>{29084B6E-06A8-4FBA-B38F-FC5E1E784A5A}</Project>
+      <Name>SGDataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\References\SGNativeEntities\SGNativeEntities.csproj">
+      <Project>{F907BA4C-411D-4F54-B7F1-86F98758431D}</Project>
+      <Name>SGNativeEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\References\SGUtilities\SGUtilities.csproj">
+      <Project>{9880A315-191B-4BEA-81D5-528008B692CC}</Project>
+      <Name>SGUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\References\XMLConfiguration\XMLConfiguration.csproj">
+      <Project>{99D50610-771C-4640-AE11-DD9378FE2745}</Project>
+      <Name>XMLConfiguration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

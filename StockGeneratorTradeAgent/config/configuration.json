@@ -1,0 +1,19 @@
+﻿{
+"BizTime":{"WorkTime":"09:00-16:00", "AM":"10:00-11:00", "PM":"13:30-14:30"},
+"WebSocket":{"URL":"ws://120.27.48.42:4649/Socket","User":"StockGenerator","Password":"12345678"},
+"DBSetting":{"Host":"127.0.0.1","DBName":"StockGeneratorDB","User":"Ayre","Password":"ayre12345678!"},
+"TradeAccount":{"AppName":"WinWT","Account":"0106379"},
+"BTrade":{
+	"Code":{"Top":87,"Left":292,"Width":53,"Height":20,"WHnd":0},
+	"Price":{"Top":129,"Left":292,"Width":99,"Height":20,"WHnd":0},
+	"Amount":{"Top":206,"Left":292,"Width":99,"Height":20,"WHnd":0},
+	"Confirm":{"Top":229,"Left":346,"Width":62,"Height":21,"WHnd":0}
+	},
+"STrade":{
+	"Code":{"Top":87,"Left":292,"Width":53,"Height":20,"WHnd":0},
+	"Price":{"Top":129,"Left":292,"Width":99,"Height":20,"WHnd":0},
+	"Amount":{"Top":188,"Left":292,"Width":99,"Height":20,"WHnd":0},
+	"Confirm":{"Top":210,"Left":346,"Width":62,"Height":21,"WHnd":0}
+	},
+"JuHeData":{"AppKey":"02274aa08815755fcdfd584de5f2cb78"}
+}

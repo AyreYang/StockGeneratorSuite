@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config TYPE="DICT">
+  <BUSINESS-TIME TYPE="DICT">
+    <DATETIME-DURATION FROM="09:20:00" TO="15:10:00" />
+  </BUSINESS-TIME>
+  <DATABASE-SETTING TYPE="DICT">
+    <DATABASE-INFO HOST="." DBNAME="StockGeneratorDB" USER="sa" PASSWORD="ayre12345678!" />
+  </DATABASE-SETTING>
+  <LOGGER-SETTING TYPE="DICT">
+    <LOGGER DIR="./log" EXT="log" PATTERN="[@DATE]:[@TYPE]:@MSG" />
+  </LOGGER-SETTING>
+  <TRADE-APP TYPE="DICT">
+    <WINDOW-CONTROL-ID-BUY TYPE="LIST">
+      <WINDOW-CONTROL-ITEM Item="CODE" Left="292" Top="87" Width="53" Height="20" WHnd="0" />
+      <WINDOW-CONTROL-ITEM Item="PRICE" Left="292" Top="129" Width="99" Height="20" WHnd="0" />
+      <WINDOW-CONTROL-ITEM Item="AMOUNT" Left="292" Top="206" Width="99" Height="20" WHnd="0" />
+      <WINDOW-CONTROL-ITEM Item="CONFIRM" Left="346" Top="229" Width="62" Height="21" WHnd="0" />
+    </WINDOW-CONTROL-ID-BUY>
+    <WINDOW-CONTROL-ID-SALE TYPE="LIST">
+      <WINDOW-CONTROL-ITEM Item="CODE" Left="292" Top="87" Width="53" Height="20" WHnd="0" />
+      <WINDOW-CONTROL-ITEM Item="PRICE" Left="292" Top="129" Width="99" Height="20" WHnd="0" />
+      <WINDOW-CONTROL-ITEM Item="AMOUNT" Left="292" Top="188" Width="99" Height="20" WHnd="0" />
+      <WINDOW-CONTROL-ITEM Item="CONFIRM" Left="346" Top="210" Width="62" Height="21" WHnd="0" />
+    </WINDOW-CONTROL-ID-SALE>
+    <WINDOW-ID TYPE="STRING" VALUE="WinWT" ACCOUNT="0106379" />
+  </TRADE-APP>
+</Config>
