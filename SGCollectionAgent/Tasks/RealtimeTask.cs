@@ -51,7 +51,7 @@ namespace SGCollectionAgent.Tasks
             {
                 // Retrieve Code Data From DB
                 var stocks = new List<string>();
-                if (CheckTable<DBTStkFavoriteEntity>()) accessor.Retrieve<DBTStkFavoriteEntity>().ForEach(data => stocks.Add(StockInfoEntity.FormatedCode(data.Code)));
+                if (CheckTable<DBTStkFavoriteEntity>()) accessor.RetrieveEntity<DBTStkFavoriteEntity>().ForEach(data => stocks.Add(StockInfoEntity.FormatedCode(data.Code)));
                 if (stocks.Count > 0)
                 {
                     var list = service.FetchData<TengxunStockInfoEntity>(stocks);
@@ -104,7 +104,7 @@ namespace SGCollectionAgent.Tasks
             if (info == null || !info.IsTodayData || info.TradeList.Count <= 0) return;
             if (!LastDayEntities.ContainsKey(info.Code))
             {
-                var entity = accessor.Retrieve<DBTStkDailyEntity>(DBTStkDailyEntity.LastDailyEntityCommand(info.Code, accessor)).FirstOrDefault();
+                var entity = accessor.RetrieveEntity<DBTStkDailyEntity>(DBTStkDailyEntity.LastDailyEntityCommand(info.Code, accessor)).FirstOrDefault();
                 if (entity != null)
                 {
                     if (entity.Close != info.YesterdayClose)

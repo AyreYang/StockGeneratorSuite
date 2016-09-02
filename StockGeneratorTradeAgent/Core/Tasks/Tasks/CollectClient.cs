@@ -39,7 +39,7 @@ namespace StockGeneratorTradeAgent.Core.Tasks.Tasks
             {
                 // Retrieve Code Data From DB
                 var stocks = new List<string>();
-                if (CheckTable<DBTStkFavoriteEntity>()) accessor.Retrieve<DBTStkFavoriteEntity>().ForEach(data => stocks.Add(StockInfoEntity.FormatedCode(data.Code)));
+                if (CheckTable<DBTStkFavoriteEntity>()) accessor.RetrieveEntity<DBTStkFavoriteEntity>().ForEach(data => stocks.Add(StockInfoEntity.FormatedCode(data.Code)));
                 if (stocks.Count > 0)
                 {
                     service.FetchData<TengxunStockInfoEntity>(stocks).ForEach(info =>

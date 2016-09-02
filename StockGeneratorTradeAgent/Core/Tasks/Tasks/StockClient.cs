@@ -89,47 +89,59 @@ namespace StockGeneratorTradeAgent.Core.Tasks.Tasks
             WeeklyLine.AddLine(new AverageLine(LINE.WEEKLY10, (int)AverageType.AT10, 2).BindEvent("BreakIn", BreakIn).BindEvent("BreakBack", BreakBack).BindEvent("BreakOut", BreakOut).BindEvent("Touched", Touched));
             WeeklyLine.AddLine(new AverageLine(LINE.WEEKLY30, (int)AverageType.AT30, 2).BindEvent("BreakIn", BreakIn).BindEvent("BreakBack", BreakBack).BindEvent("BreakOut", BreakOut).BindEvent("Touched", Touched));
 
-            // Initialize DailyLine and WeeklyLine
-            using (var page = new EntityPage<DBTStkDailyEntity>(
-                new Clause("Code = {Code} AND Date >= {Date}").AddParam("Code", this.id).AddParam("Date", DateTime.Today.AddMonths(-8)),
-                new Sort().Add("Date", Sort.Orientation.asc), 100,
-                accessor
-                ))
-            {
-                int pageno = 0;
-                List<DBTStkDailyEntity> lst_data = null;
-                while ((lst_data = page.Retrieve(++pageno)).Count > 0)
-                {
-                    lst_data.ForEach(data =>
-                    {
-                        if (!DailyLine.IsReady) DailyLine.Initialize(data.Date);
-                        if (!WeeklyLine.IsReady) WeeklyLine.Initialize(data.Date);
+            var date = (GENTableEntity.Count<DBTStkDailyEntity>(accessor) > 0) ? GENTableEntity.MaxValue<DBTStkDailyEntity, DateTime?>(accessor, "Date") : null;
+            var time = (GENTableEntity.Count<DBTStkMinuteEntity>(accessor) > 0) ? GENTableEntity.MaxValue<DBTStkMinuteEntity, DateTime?>(accessor, "Time") : null;
 
-                        DailyLine.Add(new KeyValuePair<DateTime, decimal>(data.Date, data.Close));
-                        WeeklyLine.Add(new KeyValuePair<DateTime, decimal>(data.Date, data.Close));
-                    });
+            // Initialize DailyLine and WeeklyLine
+            if (date.HasValue)
+            {
+                using (var page = new EntityPage<DBTStkDailyEntity>(
+                    new Clause("Code = {Code} AND Date >= {Date}").AddParam("Code", this.id).AddParam("Date", date.Value.Date.AddMonths(-8)),
+                    new Sort().Add("Date", Sort.Orientation.asc), 100,
+                    accessor
+                    ))
+                {
+                    int pageno = 0;
+                    List<DBTStkDailyEntity> lst_data = null;
+                    while ((lst_data = page.Retrieve(++pageno)).Count > 0)
+                    {
+                        lst_data.ForEach(data =>
+                        {
+                            if (!DailyLine.IsReady) DailyLine.Initialize(data.Date);
+                            if (!WeeklyLine.IsReady) WeeklyLine.Initialize(data.Date);
+
+                            DailyLine.Add(new KeyValuePair<DateTime, decimal>(data.Date, data.Close));
+                            WeeklyLine.Add(new KeyValuePair<DateTime, decimal>(data.Date, data.Close));
+                        });
+                    }
                 }
             }
+            if (!DailyLine.IsReady) DailyLine.Initialize(DateTime.Today);
+            if (!WeeklyLine.IsReady) WeeklyLine.Initialize(DateTime.Today);
 
             // Initialize HourLine
-            using (var page = new EntityPage<DBTStkMinuteEntity>(
-                new Clause("Code = {Code} AND Time >= {Time}").AddParam("Code", this.id).AddParam("Time", DateTime.Today.AddDays(-20)),
-                new Sort().Add("Time", Sort.Orientation.asc), 1000,
-                accessor
-                ))
+            if (time.HasValue)
             {
-                int pageno = 0;
-                List<DBTStkMinuteEntity> lst_data = null;
-                while ((lst_data = page.Retrieve(++pageno)).Count > 0)
+                using (var page = new EntityPage<DBTStkMinuteEntity>(
+                    new Clause("Code = {Code} AND Time >= {Time}").AddParam("Code", this.id).AddParam("Time", time.Value.Date.AddDays(-20)),
+                    new Sort().Add("Time", Sort.Orientation.asc), 1000,
+                    accessor
+                    ))
                 {
-                    lst_data.ForEach(data =>
+                    int pageno = 0;
+                    List<DBTStkMinuteEntity> lst_data = null;
+                    while ((lst_data = page.Retrieve(++pageno)).Count > 0)
                     {
-                        if (!HourLine.IsReady) HourLine.Initialize(data.Time);
+                        lst_data.ForEach(data =>
+                        {
+                            if (!HourLine.IsReady) HourLine.Initialize(data.Time);
 
-                        HourLine.Add(new KeyValuePair<DateTime, decimal>(data.Time, data.Close));
-                    });
+                            HourLine.Add(new KeyValuePair<DateTime, decimal>(data.Time, data.Close));
+                        });
+                    }
                 }
             }
+            if (!HourLine.IsReady) HourLine.Initialize(DateTime.Now);
 
             LinesController.AddTimeLine(LineType.HOUR, HourLine);
             LinesController.AddTimeLine(LineType.DAILY, DailyLine);

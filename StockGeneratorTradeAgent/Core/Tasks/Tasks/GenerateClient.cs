@@ -53,7 +53,7 @@ namespace StockGeneratorTradeAgent.Core.Tasks.Tasks
             {
                 if (CheckTable<DBTStkFavoriteEntity>())
                 {
-                    accessor.Retrieve<DBTStkFavoriteEntity>().FindAll(data => !workers.Any(worker => worker.id.Equals(data.Code))).ForEach(entity =>
+                    accessor.RetrieveEntity<DBTStkFavoriteEntity>().FindAll(data => !workers.Any(worker => worker.id.Equals(data.Code))).ForEach(entity =>
                     {
                         var StockTask = new StockClient(entity.Code, null);
 
