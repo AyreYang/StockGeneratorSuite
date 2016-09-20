@@ -25,16 +25,16 @@ namespace SGCollectionAgent
             do
             {
                 Console.Write("请输入参数类型(0:EXIT, 1:START, 2:STOP)");
-                var flag = Console.ReadLine();
-                switch (flag)
+                var info = Console.ReadKey();
+                switch (info.KeyChar)
                 {
-                    case "0":
+                    case '0':
                         TaskManager.Instance.Stop();
                         return;
-                    case "1":
+                    case '1':
                         TaskManager.Instance.Start();
                         break;
-                    case "2":
+                    case '2':
                         TaskManager.Instance.Stop();
                         break;
                     default:

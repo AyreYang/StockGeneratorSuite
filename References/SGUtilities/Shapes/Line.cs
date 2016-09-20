@@ -116,7 +116,7 @@ namespace SGUtilities.Shapes
 
         public override string ToString()
         {
-            return string.Format("Line:[from={0},to={1},len={2}][dir={3},slope={4}]", From, To, Length, Direction, Slope);
+            return string.Format("(<from={0},to={1},len={2}><dir={3},slope={4}>)", From, To, Length, Direction, Slope);
         }
     }
 }

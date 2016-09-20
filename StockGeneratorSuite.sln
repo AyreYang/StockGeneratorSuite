@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "websocket-sharp", "Referenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLConfiguration", "References\XMLConfiguration\XMLConfiguration.csproj", "{99D50610-771C-4640-AE11-DD9378FE2745}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_Ubuntu|Any CPU = Debug_Ubuntu|Any CPU
@@ -261,6 +263,26 @@ Global
 		{99D50610-771C-4640-AE11-DD9378FE2745}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{99D50610-771C-4640-AE11-DD9378FE2745}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{99D50610-771C-4640-AE11-DD9378FE2745}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug_Ubuntu|Any CPU.ActiveCfg = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug_Ubuntu|Mixed Platforms.ActiveCfg = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug_Ubuntu|Mixed Platforms.Build.0 = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug_Ubuntu|x86.ActiveCfg = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug_Ubuntu|x86.Build.0 = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug|x86.ActiveCfg = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Debug|x86.Build.0 = Debug|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release_Ubuntu|Any CPU.ActiveCfg = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release_Ubuntu|Mixed Platforms.ActiveCfg = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release_Ubuntu|Mixed Platforms.Build.0 = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release_Ubuntu|x86.ActiveCfg = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release_Ubuntu|x86.Build.0 = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release|Any CPU.ActiveCfg = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release|x86.ActiveCfg = Release|x86
+		{4A6BEF7F-CD67-428D-BC2E-065C225BFE44}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

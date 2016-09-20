@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using SGUtilities.Averager;
 using SGUtilities.Shapes;
+using System.Text;
 
 namespace SGUtilities.Lines
 {
     public class LinesController : IDisposable
     {
+        private List<Line> LinesCache { get; set; }
         private List<AverageLine> Lines { get; set; }
 
         private AverageValue Averager { get; set; }
@@ -110,11 +112,11 @@ namespace SGUtilities.Lines
         public void Process()
         {
             if (!Averager.IsValid) return;
-            var lines = LineMaker.ExportLast(3);
-            if (lines.Count <= 0) return;
+            LinesCache = LineMaker.ExportLast(3);
+            if (LinesCache == null || LinesCache.Count <= 0) return;
 
             if (!Initialized) MatchLines(Averager.Average);
-            Lines.ForEach(line => line.ReadLines(lines));
+            Lines.ForEach(line => line.ReadLines(LinesCache));
         }
 
         public void ClearLines()
@@ -133,6 +135,42 @@ namespace SGUtilities.Lines
             TimeLines.Clear();
             Averager.Dispose();
             LineMaker.Dispose();
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            // Lines
+            var lines = string.Empty;
+            if (LinesCache == null || LinesCache.Count <= 0)
+            {
+                lines = "[]";
+            }
+            else
+            {
+                var list = new List<string>();
+                LinesCache.ForEach(l => list.Add(l.ToString()));
+                lines = string.Format("[{0}]", string.Join(",", list));
+            }
+            sb.Append(string.Format("Ls:{0}", lines));
+
+            sb.Append("\t");
+
+            // AverageLines
+            lines = string.Empty;
+            if (Lines == null || Lines.Count <= 0)
+            {
+                lines = "[]";
+            }
+            else
+            {
+                var list = new List<string>();
+                Lines.ForEach(l => list.Add(l.ToString()));
+                lines = string.Format("[{0}]", string.Join(",", list));
+            }
+            sb.Append(string.Format("ALs:{0}", lines));
+
+            return sb.ToString();
         }
 
         ~LinesController()

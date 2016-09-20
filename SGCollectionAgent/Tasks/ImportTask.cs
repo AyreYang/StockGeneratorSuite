@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using DataBase.common;
-using DataBase.common.enums;
+using DataBase.common.objects;
 using DataBase.postgresql;
 using Log.common.enums;
 using SGCollectionAgent.Configuration;
@@ -18,7 +18,6 @@ using SGUtilities.MACD;
 using SGUtilities.RSI;
 using SGUtilities.TextFile;
 using Task.common.enums;
-using DataBase.common.objects;
 
 namespace SGCollectionAgent.Tasks
 {

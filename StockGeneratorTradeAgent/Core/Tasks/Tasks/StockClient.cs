@@ -40,6 +40,7 @@ namespace StockGeneratorTradeAgent.Core.Tasks.Tasks
             {
                 Balancer.Add(new KeyValuePair<DateTime, decimal>(data.Time, data.Current)).ForEach(pair =>LinesController.Add(pair));
                 LinesController.Process();
+                this.logger.Write(TYPE.INFO, LinesController.ToString());
             }
 
             ProcessCommand(this.GetData<SGCommand>(SocketClient.ID));
@@ -157,19 +158,28 @@ namespace StockGeneratorTradeAgent.Core.Tasks.Tasks
         private void BreakIn(EventArg evnt)
         {
             this.logger.Write(TYPE.INFO, string.Format("BreakIn:({0})", evnt.ToString()));
+            Need2Trade(evnt);
         }
         private void BreakBack(EventArg evnt)
         {
             this.logger.Write(TYPE.INFO, string.Format("BreakBack:({0})", evnt.ToString()));
+            Need2Trade(evnt);
         }
         private void BreakOut(EventArg evnt)
         {
             this.logger.Write(TYPE.INFO, string.Format("BreakOut:({0})", evnt.ToString()));
+            Need2Trade(evnt);
             LinesController.Reset();
         }
         private void Touched(EventArg evnt)
         {
             this.logger.Write(TYPE.INFO, string.Format("Touched:({0})", evnt.ToString()));
+            Need2Trade(evnt);
+        }
+
+        private void Need2Trade(EventArg evnt)
+        {
+
         }
         
     }

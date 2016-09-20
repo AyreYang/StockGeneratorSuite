@@ -45,25 +45,27 @@ namespace StockGeneratorTradeAgent.Core.Tasks.Tasks
         #region Task Events
         protected override RESULT Initial(StringBuilder messager)
         {
-            key = null;
-            user = null;
-            Connected = CONNECTSTATUS.DISCONNECTED;
-            LoginStatus = LOGINSTATUS.LOGOUT;
-            CommandQueue = new ConcurrentQueue<SGCommand>();
-            ContinuousCommands = new List<SGCommand>();
-            Commander = new CommandManager();
+            return RESULT.NG;
 
-            //Socket = new WebSocket(Config.Instance.INFO.WebSocket.URL);
-            Socket = new WebSocket("ws://127.0.0.1:4649/Socket");
-            Socket.OnOpen += OnOpen;
-            Socket.OnMessage += OnMessage;
-            Socket.OnClose += OnClose;
-            Socket.OnError += OnError;
+            //key = null;
+            //user = null;
+            //Connected = CONNECTSTATUS.DISCONNECTED;
+            //LoginStatus = LOGINSTATUS.LOGOUT;
+            //CommandQueue = new ConcurrentQueue<SGCommand>();
+            //ContinuousCommands = new List<SGCommand>();
+            //Commander = new CommandManager();
 
-            Connect();
+            ////Socket = new WebSocket(Config.Instance.INFO.WebSocket.URL);
+            //Socket = new WebSocket("ws://127.0.0.1:4649/Socket");
+            //Socket.OnOpen += OnOpen;
+            //Socket.OnMessage += OnMessage;
+            //Socket.OnClose += OnClose;
+            //Socket.OnError += OnError;
 
-            this.logger.Write(Log.common.enums.TYPE.INFO, Messager.MSG_TASK_INIT_OK);
-            return RESULT.OK;
+            //Connect();
+
+            //this.logger.Write(Log.common.enums.TYPE.INFO, Messager.MSG_TASK_INIT_OK);
+            //return RESULT.OK;
         }
         protected override RESULT Process(StringBuilder messager)
         {

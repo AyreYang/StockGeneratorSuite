@@ -12,6 +12,7 @@ namespace StockGeneratorTradeAgent
         [STAThread]
         static void Main()
         {
+            Log.common.LogCore.Mode = Log.common.enums.MODE.DEBUG;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frm_main());

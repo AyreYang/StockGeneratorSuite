@@ -508,5 +508,13 @@ namespace SGUtilities.Averager
 
             return relation;
         }
+
+        public override string ToString()
+        {
+            return string.Format("(<id={0},sc={1}><type={2},uv={3},val={4},lv={5}>)", ID.ToString(), Score,
+                Type.ToString(),
+                UpperBorder, Value, LowerBorder
+                );
+        }
     }
 }
